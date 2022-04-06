@@ -78,11 +78,13 @@
         <div  class="accordion" id="accordionExample">
             <div  class="accordion-item" th:each="empresa, i : ${empresas}">
                 <h2 class="accordion-header" th:id="${'heading' + i.index}">
-                    <button padding="50em" th:text="${empresa.nombre}" class="accordion-button" type="button" data-bs-toggle="collapse" th:data-bs-target="${'#collapse' + i.index}" aria-expanded="true" th:aria-controls="${'collapse' + i.index}">
+                    <button padding="50em" th:text="${empresa.nombre}" class="accordion-button" type="button" data-bs-toggle="collapse" 
+                            th:data-bs-target="${'#collapse' + i.index}" aria-expanded="true" th:aria-controls="${'collapse' + i.index}">
 
                     </button>
                 </h2>
-                <div th:id="${'collapse' + i.index}" class="accordion-collapse collapse show" th:aria-labelledby="${'heading' + i.index}" data-bs-parent="#accordionExample">
+                <div th:id="${'collapse' + i.index}" class="accordion-collapse collapse show" th:aria-labelledby="${'heading' + i.index}" 
+                     data-bs-parent="#accordionExample">
                     <div class="accordion-body">
                         <div  class="accordion-body"> 
                             <iframe

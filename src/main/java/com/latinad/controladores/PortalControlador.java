@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequestMapping("/")
@@ -32,16 +33,16 @@ public class PortalControlador {
     }
 
     @PostMapping("/crearEmpresa")
-    public String crearEmpresa(ModelMap modelo, @RequestParam String nombre, @RequestParam String url) {
+    public String crearEmpresa(RedirectAttributes attr, @RequestParam String nombre, @RequestParam String url) {
 
         try {
             empresaServicio.crearEmpresa(nombre, url);
 
         } catch (ErrorServicio e) {
-            modelo.put("error", e.getMessage());
-            return "index.html";
+            attr.addFlashAttribute("error", e.getMessage());
+            return "redirect:/";
         }
 
-        return "index.html";
+        return "redirect:/";
     }
 }
